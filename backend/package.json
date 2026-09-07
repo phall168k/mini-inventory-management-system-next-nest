@@ -39,6 +39,7 @@
     "cross-env": "^10.1.0",
     "ioredis": "^5.11.1",
     "minio": "^8.0.7",
+    "nestjs-paginate": "^15.0.1",
     "pg": "^8.23.0",
     "reflect-metadata": "^0.2.2",
     "rxjs": "^7.8.1",
