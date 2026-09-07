@@ -4,6 +4,7 @@ import { DatabaseModule } from './database/database.module';
 import { HealthModule } from './health/health.module';
 import { RedisModule } from './redis/redis.module';
 import { ModulesModule } from './modules/modules.module';
+import { MinioModule } from './minio/minio.module';
 
 @Module({
   imports: [
@@ -13,6 +14,7 @@ import { ModulesModule } from './modules/modules.module';
     DatabaseModule,
     HealthModule,
     RedisModule,
+    MinioModule,
     ModulesModule,
   ],
   controllers: [],
