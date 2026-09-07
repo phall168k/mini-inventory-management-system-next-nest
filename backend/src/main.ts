@@ -11,7 +11,6 @@ async function bootstrap() {
       transform: true,
     }),
   );
-  app.enableCors();
   app.enableVersioning({
     type: VersioningType.URI,
   });
