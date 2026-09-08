@@ -1,5 +1,6 @@
-import { Column, Entity, JoinColumn, ManyToOne, OneToMany, PrimaryGeneratedColumn } from "typeorm";
+import { Column, Entity, JoinColumn, ManyToMany, ManyToOne, OneToMany, PrimaryGeneratedColumn } from "typeorm";
 import { BaseEntity } from "../../../../../database/entities/base.entity";
+import { RoleEntity } from "../../role/entities/role.entity";
 
 @Entity({
     schema: 'admin',
@@ -39,6 +40,10 @@ export class PermissionEntity extends BaseEntity {
         nullable: false,
     })
     name: string;
+
+    @ManyToMany(() => RoleEntity, (role) => role.permissions)
+    roles: RoleEntity[];
+
 
     constructor(partial?: Partial<PermissionEntity>) {
         super();
