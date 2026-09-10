@@ -16,9 +16,24 @@ bun dev
 
 Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+You can start editing the page by modifying `src/app/page.tsx`. The page auto-updates as you edit the file.
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+If you move the app directory (for example, from `app` to `src/app`) while the development server is running, restart it so Next.js detects the new location. An existing server can otherwise report `ENOENT: scandir '/app/app'`.
+
+For Docker development, run this from the repository root:
+
+```bash
+docker compose --env-file .env.dev -f docker-compose.dev.yml restart frontend-dev
+```
+
+Docker stores frontend dependencies in a separate `frontend_node_modules` volume. After installing packages locally or pulling changes to `package-lock.json`, sync the container dependencies and restart the frontend:
+
+```bash
+docker compose --env-file .env.dev -f docker-compose.dev.yml exec -T frontend-dev npm ci
+docker compose --env-file .env.dev -f docker-compose.dev.yml restart frontend-dev
+```
+
+This also resolves missing Material UI modules when they are installed locally but absent from the container.
 
 ## Learn More
 
